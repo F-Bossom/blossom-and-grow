@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --green-dark: #4a7c59;
+  --green-mid: #7dab8a;
+  --green-light: #b7d9c0;
+  --cream: #fdf6ec;
+  --cream-dark: #f5e9d9;
+  --pink: #f2a7bb;
+  --pink-light: #fde0e9;
+  --brown: #c47c4a;
+  --text-dark: #3d3226;
+  --text-mid: #7a6a5a;
+  --text-light: #a89880;
+  --white: #ffffff;
+  --shadow: 0 4px 15px rgba(0,0,0,0.08);
+  --radius: 20px;
+}
+
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  background-color: var(--white);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-mid);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--green-dark);
+}
+
+.nav-links form button {
+  background: none;
+  border: none;
+  color: var(--text-mid);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-links form button:hover {
+  color: var(--green-dark);
+}
+
+/* ===== MAIN ===== */
+main {
+  flex: 1;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: var(--white);
+  text-align: center;
+  padding: 16px;
+  color: var(--text-light);
+  font-size: 14px;
+  border-top: 1px solid var(--cream-dark);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: var(--green-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background-color: var(--green-mid);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--green-dark);
+  color: var(--green-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--green-light);
+}
+
+.btn-danger {
+  background-color: #e07070;
+}
+
+.btn-danger:hover {
+  background-color: #c05050;
+}
+
+.btn-small {
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+/* ===== HOME PAGE ===== */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.hero {
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--green-dark);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+}
+
+.hero a {
+  margin: 0 8px;
+}
+
+/* ===== PLANT INDEX ===== */
+.index-container {}
+
+.index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.index-header h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--green-dark);
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.plant-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-decoration: none;
+  color: var(--text-dark);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.plant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.plant-img {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.plant-img img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.plant-card-info h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--green-dark);
+}
+
+.plant-card-info p {
+  font-size: 14px;
+  color: var(--text-mid);
+}
+
+.plant-card-info .variety {
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-mid);
+  font-size: 18px;
+}
+
+.empty-state a {
+  display: block;
+  margin-top: 16px;
+}
+
+/* ===== PLANT DETAIL ===== */
+.detail-container {}
+
+.detail-top {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+}
+
+.detail-img {
+  font-size: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border-radius: var(--radius);
+}
+
+.detail-img img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.detail-info h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green-dark);
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.detail-info p {
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.detail-actions form {
+  display: inline;
+}
+
+/* ===== CARE LOG ===== */
+.care-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.care-header {
+  margin-bottom: 20px;
+}
+
+.care-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--green-dark);
+}
+
+.care-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.care-form select,
+.care-form input {
+  padding: 10px 16px;
+  border: 2px solid var(--green-light);
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: var(--cream);
+  outline: none;
+}
+
+.care-form select:focus,
+.care-form input:focus {
+  border-color: var(--green-mid);
+}
+
+.care-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.care-log-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--cream);
+  border-radius: 50px;
+}
+
+.care-log-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.care-badge {
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.care-badge.water {
+  background: #c8e6f5;
+  color: #2a7aad;
+}
+
+.care-badge.sun {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.care-date {
+  font-size: 13px;
+  color: var(--text-mid);
+}
+
+.care-notes {
+  font-size: 13px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ===== FORMS ===== */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+
+.form-container h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.form-container p {
+  color: var(--text-mid);
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--green-light);
+  border-radius: 12px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green-mid);
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-mid);
+  font-size: 14px;
+}
+
+.auth-switch a {
+  color: var(--green-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ===== DJANGO AUTH FORM STYLING ===== */
+.form-container p label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.form-container p input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--green-light);
+  border-radius: 12px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: var(--cream);
+  outline: none;
+}
+
+.form-container ul {
+  color: #e07070;
+  font-size: 13px;
+  margin-top: 4px;
+  padding-left: 16px;
+}
+
+/* ===== MOOD BADGES ===== */
+.mood-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.mood-thriving { background: #d4f5d4; color: #2d7a2d; }
+.mood-happy { background: #d4f5d4; color: #2d7a2d; }
+.mood-thirsty { background: #c8e6f5; color: #2a7aad; }
+.mood-very_thirsty { background: #a8d4ed; color: #1a5a8d; }
+.mood-needs_sun { background: #fef3c7; color: #b45309; }
+.mood-very_dark { background: #fde68a; color: #92400e; }
+.mood-neglected { background: #fde0e0; color: #b91c1c; }
+.mood-overwatered { background: #b3d9f5; color: #0a4a8d; }
+.mood-too_much_sun { background: #ffe4b3; color: #8d4a00; }

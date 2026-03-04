@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="detail-container">
+  <div class="detail-top">
+    <div class="detail-img">
+      {% with mood=plant.get_mood family=plant.plant_family %}
+      <img
+        src="{% static 'images/' %}{{ family }}_{{ mood }}.png"
+        alt="{{ plant.get_plant_family_display }} - {{ mood }}"
+        onerror="
+          this.style.display = 'none';
+          this.nextElementSibling.style.display = 'block';
+        "
+      />
+     <span style="display:none; font-size:120px;">{% if family == 'cactus' %}🌵{% elif family == 'tropical' %}🍃{% elif family == 'ferns' %}🌿{% elif family == 'flowering' %}🌸{% elif family == 'palms' %}🌴{% elif family == 'air' %}🌱{% else %}🪴{% endif %}</span>
+      {% endwith %}
+    </div>
+    <div class="detail-info">
+      <h1>{{ plant.nickname|default:plant.get_plant_family_display }}</h1>
+      <span class="tag">{{ plant.get_plant_family_display }}</span>
+      {% with mood=plant.get_mood %}
+      <div class="mood-badge mood-{{ mood }}">{% if mood == 'thriving' %}🌈 Thriving!{% elif mood == 'happy' %}😊 Happy{% elif mood == 'thirsty' %}💧 Thirsty{% elif mood == 'very_thirsty' %}💧💧 Very Thirsty{% elif mood == 'needs_sun' %}☀️ Needs Sun{% elif mood == 'very_dark' %}🌑 Needs More Sun{% elif mood == 'neglected' %}😢 Needs Care{% elif mood == 'overwatered' %}💦 Overwatered{% elif mood == 'too_much_sun' %}🔥 Too Much Sun{% endif %}</div>
+      {% endwith %}
+      {% if plant.variety %}
+      <p><strong>Variety:</strong> {{ plant.variety }}</p>
+      {% endif %} {% if plant.notes %}
+      <p><strong>Notes:</strong> {{ plant.notes }}</p>
+      {% endif %}
+      <p><strong>Added:</strong> {{ plant.created_at|date:"M d, Y" }}</p>
+      <p><strong>Last Watered:</strong> {% if plant.last_watered %}{{ plant.last_watered|timesince }} ago{% else %}Never 💧{% endif %}</p>
+      <p><strong>Last Sunlight:</strong> {% if plant.last_sunlight %}{{ plant.last_sunlight|timesince }} ago{% else %}Never ☀️{% endif %}</p>
+      {% if user == plant.user %}
+      <div class="detail-actions">
+        <a href="{% url 'plant_edit' plant.id %}" class="btn">✏️ Edit Plant</a>
+        <form method="POST" action="{% url 'plant_delete' plant.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">🗑️ Delete Plant</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="care-section">
+    <div class="care-header">
+      <h2>💧 Care Log</h2>
+    </div>
+
+    {% if user == plant.user %}
+    <form
+      method="POST"
+      action="{% url 'care_log_add' plant.id %}"
+      class="care-form"
+    >
+      {% csrf_token %}
+      <select name="care_type">
+        <option value="water">💧 Watered</option>
+        <option value="sunlight">☀️ Sunlight</option>
+      </select>
+      <input type="date" name="date_logged" />
+      <input type="text" name="notes" placeholder="Notes (optional)" />
+      <button type="submit" class="btn">Log Care</button>
+    </form>
+    {% endif %}
+
+    <div class="care-log-list">
+      {% for log in care_logs %}
+      <div class="care-log-item">
+        <div class="care-log-left">
+          {% if log.care_type == 'water' %}
+          <span class="care-badge water">💧 Watered</span>
+          {% else %}
+          <span class="care-badge sun">☀️ Sunlight</span>
+          {% endif %}
+          <span class="care-date">{{ log.date_logged|date:"M d, Y" }}</span>
+          {% if log.notes %}
+          <span class="care-notes">{{ log.notes }}</span>
+          {% endif %}
+        </div>
+        {% if user == plant.user %}
+        <form method="POST" action="{% url 'care_log_delete' log.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-small btn-danger">🗑️</button>
+        </form>
+        {% endif %}
+      </div>
+      {% empty %}
+      <p class="empty-state">No care logs yet! Log your first care above 🌱</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

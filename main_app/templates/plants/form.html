@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>{% if plant %}✏️ Edit {{ plant.nickname|default:plant.get_plant_family_display }}{% else %}🌱 Add a New Plant{% endif %}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="plant_family">Plant Family</label>
+            <select name="plant_family" id="plant_family" required>
+                <option value="">-- Select a plant family --</option>
+                <option value="cactus" {% if plant.plant_family == 'cactus' %}selected{% endif %}>🌵 Cactus & Succulents</option>
+                <option value="tropical" {% if plant.plant_family == 'tropical' %}selected{% endif %}>🍃 Tropical Foliage</option>
+                <option value="ferns" {% if plant.plant_family == 'ferns' %}selected{% endif %}>🌿 Ferns & Leafy Greens</option>
+                <option value="flowering" {% if plant.plant_family == 'flowering' %}selected{% endif %}>🌸 Flowering Plants</option>
+                <option value="palms" {% if plant.plant_family == 'palms' %}selected{% endif %}>🌴 Palms & Trees</option>
+                <option value="air" {% if plant.plant_family == 'air' %}selected{% endif %}>🌱 Air Plants & Moss</option>
+                <option value="other" {% if plant.plant_family == 'other' %}selected{% endif %}>🪴 Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nickname">Nickname <span class="optional">(optional)</span></label>
+            <input type="text" name="nickname" id="nickname" placeholder="e.g. Gerald" value="{{ plant.nickname|default:'' }}">
+        </div>
+
+        <div class="form-group">
+            <label for="variety">Variety <span class="optional">(optional)</span></label>
+            <input type="text" name="variety" id="variety" placeholder="e.g. Succulent, String of Pearls" value="{{ plant.variety|default:'' }}">
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes <span class="optional">(optional)</span></label>
+            <textarea name="notes" id="notes" placeholder="Any notes about your plant...">{{ plant.notes|default:'' }}</textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">{% if plant %}Save Changes 🌸{% else %}Add Plant 🌱{% endif %}</button>
+            <a href="{% if plant %}{% url 'plant_detail' plant.id %}{% else %}{% url 'plant_index' %}{% endif %}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

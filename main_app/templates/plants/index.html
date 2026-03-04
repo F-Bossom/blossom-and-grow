@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="index-container">
+  <div class="index-header">
+    <h1>🌿 My Garden</h1>
+    <a href="{% url 'plant_create' %}" class="btn">+ Add a Plant</a>
+  </div>
+
+  {% if plants %}
+  <div class="plant-grid">
+    {% for plant in plants %}
+    <a href="{% url 'plant_detail' plant.id %}" class="plant-card">
+      <div class="plant-img">
+        {% with mood=plant.get_mood family=plant.plant_family %}
+        <img
+          src="{% static 'images/' %}{{ family }}_{{ mood }}.png"
+          alt="{{ plant.get_plant_family_display }} - {{ mood }}"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <span style="display:none; font-size:64px;">
+          {% if family == 'cactus' %}🌵
+          {% elif family == 'tropical' %}🍃
+          {% elif family == 'ferns' %}🌿
+          {% elif family == 'flowering' %}🌸
+          {% elif family == 'palms' %}🌴
+          {% elif family == 'air' %}🌱
+          {% else %}🪴
+          {% endif %}
+        </span>
+        {% endwith %}
+      </div>
+      <div class="plant-card-info">
+        <h2>{{ plant.nickname|default:plant.get_plant_family_display }}</h2>
+        <p>{{ plant.get_plant_family_display }}</p>
+        {% if plant.variety %}
+        <p class="variety">{{ plant.variety }}</p>
+        {% endif %}
+        {% with mood=plant.get_mood %}
+        <div class="mood-badge mood-{{ mood }}">
+          {% if mood == 'thriving' %}🌈 Thriving!
+          {% elif mood == 'happy' %}😊 Happy
+          {% elif mood == 'thirsty' %}💧 Thirsty
+          {% elif mood == 'very_thirsty' %}💧💧 Very Thirsty
+          {% elif mood == 'needs_sun' %}☀️ Needs Sun
+          {% elif mood == 'very_dark' %}🌑 Needs More Sun
+          {% elif mood == 'neglected' %}😢 Needs Care
+          {% elif mood == 'overwatered' %}💦 Overwatered
+          {% elif mood == 'too_much_sun' %}🔥 Too Much Sun
+          {% endif %}
+        </div>
+        {% endwith %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <p>🪴 Your garden is empty!</p>
+    <a href="{% url 'plant_create' %}" class="btn">Add your first plant</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

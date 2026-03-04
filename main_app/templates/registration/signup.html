@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>🌱 Join Blossom & Grow</h1>
+    <p>Create an account to start tracking your plants!</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="btn">Sign Up 🌸</button>
+        </div>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Log in here!</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>🗑️ Delete Plant</h1>
+    <p>Are you sure you want to delete <strong>{{ plant.nickname|default:plant.get_plant_family_display }}</strong>? This cannot be undone!</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Yes, Delete 🗑️</button>
+            <a href="{% url 'plant_detail' plant.id %}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
