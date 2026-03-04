@@ -1,7 +1,7 @@
 # 🌸 Blossom & Grow
 
 <!-- Replace with  logo or screenshot -->
-![Blossom & Grow Logo](placeholder-logo.png)
+![Blossom & Grow Logo - coming soon](placeholder-logo.png)
 
 ## Description
 
@@ -10,7 +10,7 @@
 
 ## 🚀 Getting Started
 
-- **Deployed App:** [Coming Soon](#)
+- **Deployed App:** [Blossom & Grow](https://blossom-and-grow-58935134392e.herokuapp.com/)
 - **Planning Materials:** [Trello Board](https://trello.com/b/2ueLsLF3/blossom-grow)
 
 
