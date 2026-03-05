@@ -8,9 +8,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+<link rel="icon" type="image/png" href="{% static 'images/blossom_and_grow_logo.png' %}">
 <body>
     <nav>
-        <a href="{% url 'home' %}" class="nav-logo">🌸 Blossom & Grow</a>
+        <a href="{% url 'home' %}" class="nav-logo">
+        <img src="{% static 'images/blossom_and_grow_logo.png' %}" alt="Blossom & Grow logo" />
+        <span>Blossom & Grow</span>
+        </a>
         <div class="nav-links">
             {% if user.is_authenticated %}
                 <a href="{% url 'plant_index' %}">My Garden</a>

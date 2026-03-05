@@ -1,7 +1,7 @@
 # 🌸 Blossom & Grow
 
 <!-- Replace with  logo or screenshot -->
-![Blossom & Grow Logo - coming soon](placeholder-logo.png)
+![Blossom & Grow Logo - coming soon](blossom_and_grow_logo.png)
 
 ## Description
 
@@ -51,8 +51,11 @@ Each plant can be in one of these moods based on their care history:
 ## 🎨 Attributions
 
 - Fonts from Google Fonts
+- Prettier VSCode Extension for code formatting
+- [WebAIM](https://webaim.org/) for WCAG testing
 - Chibi plant graphics generated with ChatGPT
 - AI debugging and assistance by Claude
+- Referenced lecture materials and [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
 
 ## 🌿 Next Steps
