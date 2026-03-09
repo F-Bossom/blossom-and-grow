@@ -60,7 +60,8 @@ Each plant can be in one of these moods based on their care history:
 
 ## 🌿 Next Steps
 
-- 🖼️ Complete chibi graphics for all 7 plant families
+- 🖼️ Add the option to upload pics of your plants
+- 🪴 Complete chibi graphics for all 7 plant families
 - 📅 Plant care reminder notifications
 - 🌡️ Seasonal care adjustments
 - 📊 Care history charts and statistics
