@@ -195,7 +195,6 @@ footer {
 }
 
 /* ===== PLANT INDEX ===== */
-.index-container {}
 
 .index-header {
   display: flex;
@@ -278,7 +277,6 @@ footer {
 }
 
 /* ===== PLANT DETAIL ===== */
-.detail-container {}
 
 .detail-top {
   display: grid;

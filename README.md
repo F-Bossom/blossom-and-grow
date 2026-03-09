@@ -1,7 +1,7 @@
 # 🌸 Blossom & Grow
 
 <!-- Replace with  logo or screenshot -->
-![Blossom & Grow Logo - coming soon](blossom_and_grow_logo.png)
+![Blossom & Grow Logo](main_app/static/images/blossom_and_grow_logo.png)
 
 ## Description
 
